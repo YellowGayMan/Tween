@@ -1,3 +1,31 @@
+--MIT LICENSE (No Perms)
+
+--Loading Message
+local sound = Instance.new("Sound")
+
+sound.Name = "Sound"
+sound.SoundId = "http://www.roblox.com/asset/?id=6156853420" 
+sound.Volume = 4.1 -- Derp 
+sound.Pitch = 1 --Speed of Playback.
+sound.Looped = false
+sound.archivable = false
+sound.Parent = game.Workspace
+
+--Chatting Function 
+local msger = game:GetService("ReplicatedStorage").Misc.Msger
+local globalchat = game:GetService("Players").LocalPlayer.PlayerGui.ChatGame.GlobalChat
+
+local function talk(message)
+    local mes = msger:Clone()
+    local mtag = msger:WaitForChild("Tag")
+    local offset = 5
+    mes.Parent = globalchat
+    mes.Text = "[mikehales] "
+    mes.TextColor3 = Color3.fromHSV(0.0000, 0.0000, 1.0000)
+    mes.Msg.Text = tostring(message)
+    mes.Msg.Position = UDim2.new(0, mes.TextBounds.x, 0, 0)
+end
+
 local options = _G.options or 
 {
 topcolor = Color3.fromRGB(35, 35, 35),
@@ -2737,3 +2765,97 @@ end
 
 return elements
 end
+
+--Loader
+local isReady2 = false
+
+local uniData = game:service'HttpService':JSONDecode(game:HttpGet("https://games.roblox.com/v1/games?universeIds=292439477")).data[1] 
+local lastUpdated = "2020-10-17T00:07:19.76Z"
+local currentUpdated = uniData.updated
+
+if lastUpdated == currentUpdated then
+    isReady2 = true
+else
+    local Tab = Instance.new("ImageLabel")
+    local Body = Instance.new("TextLabel")
+    local Container = Instance.new("Frame")
+    local UIListLayout = Instance.new("UIListLayout")
+    local Body_2 = Instance.new("TextLabel")
+    local Yes = Instance.new("TextButton")
+
+    Tab.Name = HttpService:GenerateGUID(false)
+    Tab.Parent = Design1
+    Tab.AnchorPoint = Vector2.new(0.5, 0.5)
+    Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Tab.BackgroundTransparency = 1.000
+    Tab.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    Tab.Position = UDim2.new(0.5, 0, 0.5, -100)
+    Tab.Size = UDim2.new(0, 444, 0, 51)
+    Tab.Image = "rbxassetid://605740338"
+    Tab.ImageColor3 = Color3.fromRGB(30, 30, 30)
+    Tab.ScaleType = Enum.ScaleType.Slice
+    Tab.SliceCenter = Rect.new(24, 24, 24, 24)
+    Tab.SliceScale = 2.000
+
+    Body.Name = HttpService:GenerateGUID(false)
+    Body.Parent = Tab
+    Body.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    Body.BackgroundTransparency = 1.000
+    Body.BorderSizePixel = 0
+    Body.Size = UDim2.new(1, 0, 0.86739397, 0)
+    Body.Font = Enum.Font.GothamSemibold
+    Body.Text = "EHUBV3 - LOADER"
+    Body.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Body.TextSize = 15.000
+    Body.TextWrapped = true
+
+    Container.Name = HttpService:GenerateGUID(false)
+    Container.Parent = Tab
+    Container.BackgroundColor3 = Color3.fromRGB(41, 42, 43)
+    Container.BorderColor3 = Color3.fromRGB(255, 85, 127)
+    Container.BorderSizePixel = 0
+    Container.Position = UDim2.new(0, 0, 0.86739397, 0)
+    Container.Size = UDim2.new(1.00000012, 0, 1.82999551, 35)
+
+    UIListLayout.Parent = Container
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 6)
+
+    Body_2.Name = HttpService:GenerateGUID(false)
+    Body_2.Parent = Container
+    Body_2.BackgroundColor3 = Color3.fromRGB(41, 42, 43)
+    Body_2.BackgroundTransparency = 1.000
+    Body_2.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    Body_2.BorderSizePixel = 0
+    Body_2.Size = UDim2.new(1, 0, 1, 0)
+    Body_2.Font = Enum.Font.GothamSemibold
+    Body_2.Text = [[Last Updated: 29/01/2021 (Synapse X Only)
+    (New Discord Server - Discord.gg/kE2vVQbNgP)
+    
+    Click okay to continue.]]
+    Body_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Body_2.TextSize = 18.000
+    Body_2.TextWrapped = true
+
+    Yes.Name = HttpService:GenerateGUID(false)
+    Yes.Parent = Container
+    Yes.BackgroundColor3 = Color3.fromRGB(41, 42, 43)
+    Yes.BorderSizePixel = 0
+    Yes.Position = UDim2.new(0, 0, 1.03896213, 0)
+    Yes.Size = UDim2.new(0, 444, 0, 33)
+    Yes.Font = Enum.Font.GothamSemibold
+    Yes.Text = "OK"
+    Yes.TextColor3 = Color3.fromRGB(255, 85, 127)
+    Yes.TextSize = 20.000
+
+    Yes.MouseButton1Down:Connect(function()
+        isReady2 = true
+        Tab:Destroy()
+    end)
+end
+
+repeat wait() until isReady2
+
+talk("Loading Functions...")
+talk("Be patient for 5 seconds!")
+wait(0.1)
