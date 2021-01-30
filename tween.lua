@@ -1,3 +1,18 @@
+local msger = game:GetService("ReplicatedStorage").Misc.Msger
+local globalchat = game:GetService("Players").LocalPlayer.PlayerGui.ChatGame.GlobalChat
+
+local function talk(message)
+    local mes = msger:Clone()
+    local mtag = msger:WaitForChild("Tag")
+    local offset = 5
+    mes.Parent = globalchat
+    mes.Text = "[mikehales] "
+    mes.TextColor3 = Color3.fromHSV(0.0000, 0.0000, 1.0000)
+    mes.Msg.Text = tostring(message)
+    mes.Msg.Position = UDim2.new(0, mes.TextBounds.x, 0, 0)
+end
+
+--EHUB-V3 UI Library
 local options = _G.options or 
 {
 topcolor = Color3.fromRGB(35, 35, 35),
@@ -2738,7 +2753,6 @@ end
 return elements
 end
 
---Loader -- Removed temp 
 
 talk("Loading Functions...")
 talk("Be patient for 5 seconds!")
