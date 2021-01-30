@@ -1,4 +1,78 @@
---MIT LICENSE (No Permission is Granted)  Copyright (c) 2021
+local options = _G.options or 
+{
+topcolor = Color3.fromRGB(35, 35, 35),
+textcolor = Color3.fromRGB(255, 255, 255),
+AccentColor = Color3.fromRGB(200, 0, 200),
+togglekey = Enum.KeyCode.RightShift,
+titlefont = Enum.Font.SourceSansSemibold,
+font = Enum.Font.SourceSans,
+}
+
+local write_clipboard = function() end
+getgenv().htgetf = htgetf or function() end
+pcall(function()
+write_clipboard = syn.write_clipboard
+end)
+
+local DefaultSettings = {
+pf = {
+    ["CameraRecoil"] = false,
+    ["NoSway"] = false,
+    ["NoReload"] = false,
+    ["NRecoil"] = false,
+    ["RFire"] = false,
+    ["Neonx"] = false,
+    ["FilledBoxlmao"] = false,
+    ["ForceField"] = false,
+    ["NSpread"] = false,
+    ["RainbowVisuals"] = false,
+    ["PredEmemy"] = false,
+    ["GRENADETP"] = false,
+    ["PlayerESP"] = false,
+    ["PlayerTracers"] = false,
+    ["RainGun"] = false,
+    ["PlayerChams"] = false,
+    ["TracersFromTop"] = false,
+    ["PlayerHeathBar"] = false,
+    ["NSway"] = false,
+    ["InfiniteJump"] = false,
+    ["CombineMags"] = false,
+    ["NoSway"] = false,
+    ["silentaim"] = false,
+    ["FullBright"] = false,
+    ["NoRecoil"] = false,
+    ["AllFireM"] = false,
+    ["InstReload"] = false,
+    ["NoRecoil"] = false,
+    ["NoFall"] = false,
+    ["NoSuppress"] = false,
+    ["AntiFreeze"] = false,
+    ["RapidFire"] = false,
+    ["InstAim"] = false,
+    ["InstEquip"] = false,
+    ["KillAura"] = false,
+    ["Bhop"] = false,
+    ["AntiAim"] = false
+},
+UIColorSettings = {
+    ["ColorGradient1"] = {0,0.43674468994140625,1},
+    ["ColorGradient2"] = {0.07463932037353515625,0,1},
+    ["GradientTwoEnabled"] = true,
+    ["FasterLoading"] = false,
+},
+}
+
+--Save Thingy
+local Name = "EHUBV3.CONFIG"
+local Settings
+pcall(function()
+if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+DefaultSettings = game:service'HttpService':JSONDecode(readfile(Name))
+end)
+
+local function Save()
+writefile(Name,game:service'HttpService':JSONEncode(DefaultSettings))
+end
 
 local options = _G.options or 
 {
@@ -2663,3 +2737,10 @@ end
 
 return elements
 end
+
+--Loader -- Removed temp 
+
+talk("Loading Functions...")
+talk("Be patient for 5 seconds!")
+wait(0.1)
+-------------------------------------------------------------------------------------------------------------------------
